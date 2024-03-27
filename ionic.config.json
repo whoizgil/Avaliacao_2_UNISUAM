@@ -1,0 +1,7 @@
+{
+  "name": "app-gil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
