@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Cálculo de IMC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">Altura (cm) (Ex: 170)</ion-label>
+    <ion-input
+      type="number"
+      [(ngModel)]="altura"
+      placeholder="Informe a altura"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Peso (kg) (Ex:50)</ion-label>
+    <ion-input
+      type="number"
+      [(ngModel)]="peso"
+      placeholder="Informe o peso"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="calcularIMC()">Calcular IMC</ion-button>
+
+  <ion-button expand="full" color="medium" (click)="limparCampos()"
+    >Limpar Campos</ion-button
+  >
+
+  <ion-card *ngIf="imc !== '0' && imc !== ''">
+    <ion-card-header>Resultado do IMC</ion-card-header>
+    <ion-card-content>
+      <p>Seu IMC é: {{ imc }}</p>
+      <p>Você está com: {{ resultadoIMC }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="interpretação">
+    <ion-button shape="round" expand="full" (click)="toggleGrid()"
+      >Veja a interpretação do IMC</ion-button
+    >
+    <ion-grid *ngIf="showGrid" class="grid">
+      <ion-row class="mains-interpretação">
+        <ion-col size="4" style="font-size: 14px; white-space: nowrap"
+          ><strong>IMC</strong></ion-col
+        >
+        <ion-col size="4" style="font-size: 14px; white-space: nowrap"
+          ><strong>CLASSIFICAÇÃO</strong></ion-col
+        >
+        <ion-col size="4" style="font-size: 14px"
+          ><strong>OBESIDADE (GRAU)</strong></ion-col
+        >
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">MENOR QUE 18,5</ion-col>
+        <ion-col size="4">MAGREZA</ion-col>
+        <ion-col size="4">0</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">ENTRE 18,5 E 24,9</ion-col>
+        <ion-col size="4">NORMAL</ion-col>
+        <ion-col size="4">0</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">ENTRE 25,0 E 29,9</ion-col>
+        <ion-col size="4">SOBREPESO</ion-col>
+        <ion-col size="4">1</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">ENTRE 30,0 E 39,9</ion-col>
+        <ion-col size="4">OBESIDADE</ion-col>
+        <ion-col size="4">2</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">MAIOR QUE 40</ion-col>
+        <ion-col size="4">OBESIDADE GRAVE</ion-col>
+        <ion-col size="4">3</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

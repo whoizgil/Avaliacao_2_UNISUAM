@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+.infos ion-item {
+  width: 70%;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
